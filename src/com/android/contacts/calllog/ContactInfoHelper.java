@@ -18,6 +18,7 @@ package com.android.contacts.calllog;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract.Contacts;
@@ -26,7 +27,9 @@ import android.provider.Settings;
 import android.provider.Telephony;
 import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
+import android.widget.Toast;
 
+import com.android.contacts.R;
 import com.android.contacts.util.UriUtils;
 
 /**
@@ -35,6 +38,10 @@ import com.android.contacts.util.UriUtils;
 public class ContactInfoHelper {
     private final Context mContext;
     private final String mCurrentCountryIso;
+
+    // Blacklist support
+    private static final String INSERT_BLACKLIST = "com.android.phone.INSERT_BLACKLIST";
+    private static final String BLACKLIST_NUMBER = "number";
 
     public ContactInfoHelper(Context context, String currentCountryIso) {
         mContext = context;
@@ -244,3 +251,5 @@ public class ContactInfoHelper {
                 Settings.System.PHONE_BLACKLIST_ENABLED, 1) != 0;
     }
 }
+
+
