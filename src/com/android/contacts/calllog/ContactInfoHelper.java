@@ -21,6 +21,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.PhoneLookup;
+import android.provider.Settings;
 import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 
@@ -211,5 +212,29 @@ public class ContactInfoHelper {
             countryIso = mCurrentCountryIso;
         }
         return PhoneNumberUtils.formatNumber(number, normalizedNumber, countryIso);
+    }
+
+    /**
+     * Requests the given number to be added to the phone blacklist
+     *
+     * @param number the number to be blacklisted
+     */
+    public void addNumberToBlacklist(String number) {
+                Intent intent = new Intent(INSERT_BLACKLIST);
+        intent.putExtra(BLACKLIST_NUMBER, number);
+        mContext.sendBroadcast(intent);
+
+        // Give the user some feedback
+        String message = mContext.getString(R.string.toast_added_to_blacklist, number);
+        Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Checks whether calls can be blacklisted; that is, whether the
+     * phone blacklist is enabled
+     */
+    public boolean canBlacklistCalls() {
+        return Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.PHONE_BLACKLIST_ENABLED, 1) != 0;
     }
 }
