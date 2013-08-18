@@ -14,6 +14,16 @@
      limitations under the License.
 -->
 <resources>
+    <style name="PeopleTheme1" parent="@android:style/Theme.Holo">
+        <item name="android:actionBarStyle">@style/ContactsActionBarStyle</item>
+        <item name="android:actionBarWidgetTheme">@style/ContactsActionBarTheme</item>
+        <item name="android:actionBarItemBackground">@drawable/action_bar_item_background</item>
+        <item name="android:actionBarTabStyle">@style/ContactsActionBarTabView</item>
+        <item name="android:actionDropDownStyle">@style/ContactsActionBarDropDownStyle</item>
+        <item name="android:textColorPrimary">@color/primary_text_color</item>
+        <item name="android:textColorSecondary">@color/secondary_text_color</item>
+        <item name="android:listViewStyle">@style/ListViewStyle</item>
+    </style>
     <style name="PeopleTheme" parent="@style/PeopleTheme1">
         <item name="list_item_height">?android:attr/listPreferredItemHeight</item>
         <item name="activated_background">@drawable/list_item_activated_background</item>
@@ -46,6 +56,19 @@
         <item name="list_item_text_indent">@dimen/contact_browser_list_item_text_indent</item>
         <!-- Favorites -->
         <item name="favorites_padding_bottom">0dip</item>
+    </style>
+
+    <style name="ContactsActionBarStyle" parent="@android:style/Widget.Holo.ActionBar.Solid">
+        <item name="android:background">@drawable/ab_solid_custom_blue_inverse_holo</item>
+        <item name="android:displayOptions">none</item>
+        <item name="android:backgroundStacked">@drawable/ab_solid_custom_blue_inverse_holo</item>
+    </style>
+
+    <style name="ContactsActionBarTheme" parent="@android:style/Theme.Holo">
+        <item name="android:textColorHint">#CCCCCC</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:popupMenuStyle">@android:style/Widget.Holo.PopupMenu</item>
+        <item name="android:dropDownListViewStyle">@style/ListViewDropdownStyle</item>
     </style>
 
     <style name="ContactsPickerTheme1" parent="@android:Theme.Holo.Dialog">
